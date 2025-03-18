@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   Bot,
   LineChart,
@@ -11,9 +12,25 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { LeadGenDialog } from "@/components/ui/lead-gen-dialog";
 
-const services = [
+type ServiceType =
+  | "AI Automations"
+  | "Process Improvement"
+  | "IT Consulting"
+  | "SEO Services"
+  | "Marketing Solutions"
+  | "Business Analytics";
+
+interface Service {
+  icon: JSX.Element;
+  title: ServiceType;
+  description: string;
+  link: string;
+  features: string[];
+}
+
+const services: Service[] = [
   {
     icon: <Bot className="h-12 w-12 text-primary" />,
     title: "AI Automations",
@@ -59,6 +76,14 @@ const services = [
 ];
 
 export function ServicesSection() {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState<ServiceType>("AI Automations");
+
+  const handleLearnMoreClick = (service: ServiceType) => {
+    setSelectedService(service);
+    setDialogOpen(true);
+  };
+
   return (
     <section id="services" className="py-16 md:py-24 bg-white dark:bg-slate-950">
       <div className="container px-4 md:px-6">
@@ -92,16 +117,28 @@ export function ServicesSection() {
                     </li>
                   ))}
                 </ul>
-                <Button variant="outline" size="sm" asChild className="w-full mt-2 group">
-                  <Link href={service.link} className="inline-flex items-center justify-center">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full mt-2 group"
+                  onClick={() => handleLearnMoreClick(service.title)}
+                >
+                  <span className="inline-flex items-center justify-center">
                     Learn More
                     <ArrowUpRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </Link>
+                  </span>
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
+
+        {/* Lead Generation Dialog */}
+        <LeadGenDialog 
+          open={dialogOpen} 
+          onOpenChange={setDialogOpen} 
+          serviceType={selectedService} 
+        />
       </div>
     </section>
   );
