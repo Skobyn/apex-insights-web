@@ -409,9 +409,9 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
         
         <div className="py-4">
           {/* Form fields */}
-          {currentContent.formFields?.length > 0 && (
+          {(currentContent.formFields && currentContent.formFields.length > 0) && (
             <form className="space-y-4">
-              {currentContent.formFields?.includes("name") && (
+              {(currentContent.formFields && currentContent.formFields.includes("name")) && (
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name</Label>
                   <Input 
@@ -424,7 +424,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
                 </div>
               )}
               
-              {currentContent.formFields?.includes("email") && (
+              {(currentContent.formFields && currentContent.formFields.includes("email")) && (
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
                   <Input 
@@ -438,7 +438,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
                 </div>
               )}
               
-              {currentContent.formFields?.includes("phone") && (
+              {(currentContent.formFields && currentContent.formFields.includes("phone")) && (
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input 
@@ -451,7 +451,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
                 </div>
               )}
               
-              {currentContent.formFields?.includes("company") && (
+              {(currentContent.formFields && currentContent.formFields.includes("company")) && (
                 <div className="space-y-2">
                   <Label htmlFor="company">Company Name</Label>
                   <Input 
@@ -463,7 +463,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
                 </div>
               )}
               
-              {currentContent.formFields?.includes("website") && (
+              {(currentContent.formFields && currentContent.formFields.includes("website")) && (
                 <div className="space-y-2">
                   <Label htmlFor="website">Website URL</Label>
                   <Input 
