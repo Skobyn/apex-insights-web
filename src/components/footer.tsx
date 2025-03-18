@@ -69,16 +69,15 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-lg font-semibold">Contact</h4>
             <address className="not-italic text-slate-400 space-y-2">
-              <p>123 Business Avenue</p>
-              <p>San Francisco, CA 94105</p>
+              <p>Chicago, IL</p>
               <p>
-                <a href="mailto:info@apexinsights.io" className="hover:text-primary transition-colors">
-                  info@apexinsights.io
+                <a href="mailto:solutions@getapexinsights.com" className="hover:text-primary transition-colors">
+                  solutions@getapexinsights.com
                 </a>
               </p>
               <p>
-                <a href="tel:+14155550123" className="hover:text-primary transition-colors">
-                  (415) 555-0123
+                <a href="tel:+17739579267" className="hover:text-primary transition-colors">
+                  (773) 957-9267
                 </a>
               </p>
             </address>

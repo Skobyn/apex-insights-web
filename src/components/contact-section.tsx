@@ -197,8 +197,7 @@ export function ContactSection() {
                 <div>
                   <h3 className="text-xl font-medium mb-2">Our Location</h3>
                   <p className="text-slate-600 dark:text-slate-400">
-                    123 Business Avenue<br />
-                    San Francisco, CA 94105<br />
+                    Chicago, IL<br />
                     United States
                   </p>
                 </div>
@@ -211,8 +210,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h3 className="text-xl font-medium mb-2">Email Us</h3>
-                  <p className="text-slate-600 dark:text-slate-400">info@apexinsights.io</p>
-                  <p className="text-slate-600 dark:text-slate-400">support@apexinsights.io</p>
+                  <p className="text-slate-600 dark:text-slate-400">solutions@getapexinsights.com</p>
                 </div>
               </div>
               <div className="flex space-x-4">
@@ -223,8 +221,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h3 className="text-xl font-medium mb-2">Call Us</h3>
-                  <p className="text-slate-600 dark:text-slate-400">(415) 555-0123</p>
-                  <p className="text-slate-600 dark:text-slate-400">(415) 555-0124</p>
+                  <p className="text-slate-600 dark:text-slate-400">(773) 957-9267</p>
                 </div>
               </div>
             </div>

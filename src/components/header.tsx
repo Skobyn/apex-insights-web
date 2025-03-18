@@ -41,7 +41,9 @@ export function Header() {
               {item.name}
             </Link>
           ))}
-          <Button>Get Started</Button>
+          <Link href="/#contact">
+            <Button>Get Started</Button>
+          </Link>
         </nav>
 
         {/* Mobile Navigation */}
@@ -64,7 +66,9 @@ export function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Button className="mt-4">Get Started</Button>
+              <Link href="/#contact" onClick={() => setIsMenuOpen(false)}>
+                <Button className="mt-4">Get Started</Button>
+              </Link>
             </nav>
           </SheetContent>
         </Sheet>
