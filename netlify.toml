@@ -8,15 +8,16 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
+# Commenting out redirect as it may interfere with Next.js routing
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+#   force = true
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
-  NEXT_PUBLIC_URL = "https://ai-solutions-smbs.same-app.com"
+  NETLIFY_NEXT_PLUGIN_SKIP = "false"
+  # Removed NEXT_PUBLIC_URL
 
 [[headers]]
   for = "/*"
