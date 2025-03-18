@@ -22,6 +22,24 @@ type ServiceType =
   | "Marketing Solutions"
   | "Business Analytics";
 
+// Define the interface for funnel content objects
+interface FunnelContent {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  primaryButtonText: string;
+  secondaryButtonText?: string;
+  hasSecondaryButton: boolean;
+  formFields?: string[];
+  isCalendar?: boolean;
+  isOrderBump?: boolean;
+  isUpSell?: boolean;
+  isOfferWall?: boolean;
+  isFinal?: boolean;
+  upSellOptions?: string[];
+  offerWallOptions?: string[];
+}
+
 interface LeadGenDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -42,7 +60,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   const [selectedUpgrades, setSelectedUpgrades] = useState<string[]>([]);
 
   // Define different funnels based on service type
-  const getFunnelContent = (service: ServiceType, step: number) => {
+  const getFunnelContent = (service: ServiceType, step: number): FunnelContent => {
     switch(service) {
       case "SEO Services":
         return getSeoFunnelContent(step);
@@ -62,7 +80,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   // SEO Services: "Dominate Google" Lead Generation Funnel
-  const getSeoFunnelContent = (step: number) => {
+  const getSeoFunnelContent = (step: number): FunnelContent => {
     switch(step) {
       case 1:
         return {
@@ -105,7 +123,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   // IT Consulting: "Peace of Mind IT Audit" Consultation Funnel
-  const getItConsultingFunnelContent = (step: number) => {
+  const getItConsultingFunnelContent = (step: number): FunnelContent => {
     switch(step) {
       case 1:
         return {
@@ -138,7 +156,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   // AI Automations: "Reclaim Your Time" Webinar Funnel
-  const getAiAutomationsFunnelContent = (step: number) => {
+  const getAiAutomationsFunnelContent = (step: number): FunnelContent => {
     switch(step) {
       case 1:
         return {
@@ -172,7 +190,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   // Process Improvement: "Boost Your Bottom Line" Order Form Bump Funnel
-  const getProcessImprovementFunnelContent = (step: number) => {
+  const getProcessImprovementFunnelContent = (step: number): FunnelContent => {
     switch(step) {
       case 1:
         return {
@@ -206,7 +224,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   // Marketing Solutions: "More Leads, More Sales" Up-sell Funnel
-  const getMarketingSolutionsFunnelContent = (step: number) => {
+  const getMarketingSolutionsFunnelContent = (step: number): FunnelContent => {
     switch(step) {
       case 1:
         return {
@@ -255,7 +273,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   // Business Analytics: "Unlock Your Data Insights" Thank You Page Offer Wall
-  const getBusinessAnalyticsFunnelContent = (step: number) => {
+  const getBusinessAnalyticsFunnelContent = (step: number): FunnelContent => {
     switch(step) {
       case 1:
         return {
@@ -296,7 +314,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   // Default funnel content
-  const getDefaultFunnelContent = (step: number) => {
+  const getDefaultFunnelContent = (step: number): FunnelContent => {
     switch(step) {
       case 1:
         return {
