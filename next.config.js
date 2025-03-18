@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   distDir: process.env.NODE_ENV === "production" ? "build" : ".next",
+  output: 'standalone',
   images: {
     domains: [
       "same-assets.com",

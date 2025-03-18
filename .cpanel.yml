@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/YOURUSERNAME/public_html/
+    - /bin/cp -R public/* $DEPLOYPATH
+    - /bin/cp -R build/standalone/* $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/.next/static
+    - /bin/cp -R build/static/* $DEPLOYPATH/.next/static 
