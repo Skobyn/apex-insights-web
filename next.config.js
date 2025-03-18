@@ -1,0 +1,47 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  distDir: process.env.NODE_ENV === "production" ? "build" : ".next",
+  images: {
+    domains: [
+      "same-assets.com",
+      "ext.same-assets.com",
+      "source.unsplash.com",
+      "images.unsplash.com",
+      "ugc.same-assets.com",
+      "www.gravatar.com",
+      "s.gravatar.com",
+      "github.com",
+      "avatars.githubusercontent.com",
+      "lh3.googleusercontent.com",
+      "openweathermap.org",
+      "platform-lookaside.fbsbx.com",
+      "ui-avatars.com",
+      "api.mapbox.com",
+      "vitharani-images.s3.amazonaws.com",
+      "vitharani.com",
+      "pbs.twimg.com",
+      "tse3.mm.bing.net",
+      "www.bing.com",
+      "en.wikipedia.org",
+      "upload.wikimedia.org",
+      "asset.brandfetch.io",
+      "cdn.sanity.io",
+    ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ];
+  },
+};
+
+module.exports = nextConfig;
