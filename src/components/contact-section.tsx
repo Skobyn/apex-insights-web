@@ -49,11 +49,16 @@ export function ContactSection() {
     // Add services array as a string
     formData.set('services', JSON.stringify(formData.getAll('services')));
     
+    // Process form data to handle File objects properly
+    const formEntries = Array.from(formData.entries())
+      .filter(([_, value]) => typeof value === 'string')
+      .map(([key, value]) => [key, value.toString()]);
+    
     // Submit to Netlify
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(Array.from(formData.entries())).toString()
+      body: new URLSearchParams(formEntries).toString()
     })
       .then(() => {
         console.log("Form submitted successfully");

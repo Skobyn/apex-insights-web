@@ -73,10 +73,14 @@ export default function SEOConsultingPage() {
       const formDataObj = new FormData(form);
       
       // Netlify form submission
+      const formEntries = Array.from(formDataObj.entries())
+        .filter(([_, value]) => typeof value === 'string')
+        .map(([key, value]) => [key, value.toString()]);
+        
       const netlifyResponse = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(Array.from(formDataObj.entries())).toString()
+        body: new URLSearchParams(formEntries).toString()
       });
       
       // Also send data to our serverless function
