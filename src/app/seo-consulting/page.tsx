@@ -8,7 +8,7 @@ import { Search, ChevronRight, CheckCircle, BarChart, Award, Users, Globe, Arrow
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useState, FormEvent } from "react";
-import { toast } from "sonner";
+import { toast } from "@/components/toast-fallback";
 
 export default function SEOConsultingPage() {
   const [formData, setFormData] = useState({
@@ -68,9 +68,24 @@ export default function SEOConsultingPage() {
     setIsSubmitting(true);
     
     try {
-      // Here you would normally send the data to your API
-      // For demo purposes, we'll just simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Send data to our Netlify serverless function
+      const response = await fetch('/.netlify/functions/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          formType: 'seo-consulting',
+          submittedAt: new Date().toISOString()
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.message || 'Form submission failed');
+      }
       
       toast.success("Thank you! We'll contact you shortly about your SEO consultation.", {
         duration: 5000
@@ -84,6 +99,7 @@ export default function SEOConsultingPage() {
         website: ""
       });
     } catch (error) {
+      console.error('Error submitting form:', error);
       toast.error("There was an error submitting the form. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -95,8 +111,8 @@ export default function SEOConsultingPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section with Form */}
-        <section className="py-5 md:py-8 bg-gradient-to-b from-primary/5 to-primary/10">
-          <div className="container px-4 md:px-6">
+        <section className="py-6 md:py-10 bg-gradient-to-b from-primary/5 to-primary/10">
+          <div className="container px-5 md:px-7">
             <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-6">
                 <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">

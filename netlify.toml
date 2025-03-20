@@ -2,11 +2,24 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "npm install && npm run build"
-  publish = "build"
+  command = "npm run build"
+  publish = ".next"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm run dev"
+  port = 8888
+  targetPort = 3000
+  publish = ".next"
+  framework = "nextjs"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
 
 # Commenting out redirect as it may interfere with Next.js routing
 # [[redirects]]
