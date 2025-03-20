@@ -11,7 +11,7 @@
   port = 8888
   targetPort = 3000
   publish = "out"
-  framework = "nextjs"
+  framework = "next"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
