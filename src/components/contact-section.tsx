@@ -53,7 +53,7 @@ export function ContactSection() {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString()
+      body: new URLSearchParams(Array.from(formData.entries())).toString()
     })
       .then(() => {
         console.log("Form submitted successfully");

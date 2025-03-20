@@ -76,7 +76,7 @@ export default function SEOConsultingPage() {
       const netlifyResponse = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formDataObj).toString()
+        body: new URLSearchParams(Array.from(formDataObj.entries())).toString()
       });
       
       // Also send data to our serverless function
