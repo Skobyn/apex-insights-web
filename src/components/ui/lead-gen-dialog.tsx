@@ -403,37 +403,37 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
     }
     
     try {
-      // Create form data object
-      const formFormData = new FormData();
-      formFormData.append('form-name', 'lead-gen');
-      formFormData.append('service-type', serviceType);
+      // Create form data object for Netlify
+      const netlifyData: Record<string, string> = {
+        'form-name': 'lead-gen',
+        'service-type': serviceType
+      };
       
       // Add all form fields
       Object.entries(formData).forEach(([key, value]) => {
-        if (value) formFormData.append(key, value.toString());
+        if (value) netlifyData[key] = value.toString();
       });
       
       // Add selected upgrades if any
       if (selectedUpgrades.length > 0) {
-        formFormData.append('selected-upgrades', JSON.stringify(selectedUpgrades));
+        netlifyData['selected-upgrades'] = selectedUpgrades.join(", ");
       }
       
       // Add order bump selection if relevant
       if (currentContent.isOrderBump) {
-        formFormData.append('order-bump', selectedBump ? 'yes' : 'no');
+        netlifyData['order-bump'] = selectedBump ? 'yes' : 'no';
       }
       
-      // Filter out non-string values
-      const formEntries = Array.from(formFormData.entries())
-        .filter(([_, value]) => typeof value === 'string')
-        .map(([key, value]) => [key, value.toString()]);
-      
-      // Submit to Netlify
-      await fetch("/", {
+      // Submit to Netlify using the exact format they expect
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formEntries).toString()
+        body: new URLSearchParams(netlifyData).toString()
       });
+      
+      if (!response.ok) {
+        throw new Error(`Netlify form submission failed with status: ${response.status}`);
+      }
       
       // Also submit to serverless function
       await fetch('/.netlify/functions/submit-form', {
