@@ -387,7 +387,74 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
       setSelectedBump(true);
     }
     
+    // Submit the form if we have a form to submit in current step
+    if (currentContent.formFields && currentContent.formFields.length > 0) {
+      handleFormSubmit();
+    }
+    
     setCurrentStep(prev => prev + 1);
+  };
+  
+  // Handle form submission to both Netlify and serverless function
+  const handleFormSubmit = async () => {
+    // Only attempt submission if we have the required fields
+    if (!formData.name || !formData.email) {
+      return;
+    }
+    
+    try {
+      // Create form data object
+      const formFormData = new FormData();
+      formFormData.append('form-name', 'lead-gen');
+      formFormData.append('service-type', serviceType);
+      
+      // Add all form fields
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value) formFormData.append(key, value.toString());
+      });
+      
+      // Add selected upgrades if any
+      if (selectedUpgrades.length > 0) {
+        formFormData.append('selected-upgrades', JSON.stringify(selectedUpgrades));
+      }
+      
+      // Add order bump selection if relevant
+      if (currentContent.isOrderBump) {
+        formFormData.append('order-bump', selectedBump ? 'yes' : 'no');
+      }
+      
+      // Filter out non-string values
+      const formEntries = Array.from(formFormData.entries())
+        .filter(([_, value]) => typeof value === 'string')
+        .map(([key, value]) => [key, value.toString()]);
+      
+      // Submit to Netlify
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formEntries).toString()
+      });
+      
+      // Also submit to serverless function
+      await fetch('/.netlify/functions/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          serviceType,
+          selectedUpgrades: selectedUpgrades.length > 0 ? selectedUpgrades : undefined,
+          orderBump: currentContent.isOrderBump ? selectedBump : undefined,
+          formType: 'lead-gen',
+          submittedAt: new Date().toISOString()
+        }),
+      });
+      
+      console.log("Form submitted successfully");
+    } catch (error) {
+      console.error("Form submission error:", error);
+    }
   };
 
   const handleSecondaryButtonClick = () => {
