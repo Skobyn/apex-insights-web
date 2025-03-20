@@ -68,10 +68,10 @@ export function ReviewWidget() {
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        {/* Cards container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full max-w-4xl mx-auto">
+        {/* Cards container - vertically stacked */}
+        <div className="flex flex-col w-full max-w-xl mx-auto space-y-8">
           {/* First card stack */}
-          <div className="relative">
+          <div className="relative w-full h-auto">
             {/* Background card */}
             <div className="absolute z-10 w-full transform translate-y-2 -translate-x-2 scale-[0.97] opacity-70 shadow-md">
               <Card className="bg-white rounded-xl overflow-hidden">
@@ -150,7 +150,7 @@ export function ReviewWidget() {
           </div>
 
           {/* Second card stack */}
-          <div className="relative">
+          <div className="relative w-full h-auto">
             {/* Background card */}
             <div className="absolute z-10 w-full transform translate-y-2 -translate-x-2 scale-[0.97] opacity-70 shadow-md">
               <Card className="bg-white rounded-xl overflow-hidden">
