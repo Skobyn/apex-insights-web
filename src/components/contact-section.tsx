@@ -44,15 +44,27 @@ export function ContactSection() {
     
     // Get form data for Netlify submission
     const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
+    const formDataObj = new FormData(form);
     
     // Add services array as a string
-    formData.set('services', JSON.stringify(formData.getAll('services')));
+    formDataObj.set('services', JSON.stringify(formDataObj.getAll('services')));
     
     // Process form data to handle File objects properly
-    const formEntries = Array.from(formData.entries())
+    const formEntries = Array.from(formDataObj.entries())
       .filter(([_, value]) => typeof value === 'string')
       .map(([key, value]) => [key, value.toString()]);
+    
+    // Create a regular object with the form data for the serverless function
+    const jsonData = {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company || null,
+      phone: formData.phone || null,
+      message: formData.message,
+      services: formData.services,
+      formType: 'contact',
+      submittedAt: new Date().toISOString()
+    };
     
     // Submit to Netlify
     fetch("/", {
@@ -60,8 +72,32 @@ export function ContactSection() {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formEntries).toString()
     })
-      .then(() => {
-        console.log("Form submitted successfully");
+      .then(async () => {
+        console.log("Form submitted to Netlify successfully");
+        
+        // Also submit to serverless function for Supabase
+        try {
+          const serverlessResponse = await fetch('/.netlify/functions/submit-form', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(jsonData),
+          });
+          
+          if (!serverlessResponse.ok) {
+            const errorData = await serverlessResponse.json();
+            console.error("Serverless function error:", errorData);
+            throw new Error(`Serverless function failed with status: ${serverlessResponse.status}`);
+          }
+          
+          const responseData = await serverlessResponse.json();
+          console.log("Serverless function response:", responseData);
+        } catch (serverlessError) {
+          console.error("Serverless function submission error:", serverlessError);
+          // Continue with form submission success even if serverless function fails
+        }
+        
         setSubmitted(true);
         
         // Reset form after submission
