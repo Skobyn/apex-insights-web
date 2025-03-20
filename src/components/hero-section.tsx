@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Bot, ChevronRight, Zap } from "lucide-react";
+import { ReviewWidget } from "@/components/ui/review-widget";
 
 export function HeroSection() {
   return (
@@ -51,20 +52,8 @@ export function HeroSection() {
             <div className="relative h-[350px] w-[350px] sm:h-[450px] sm:w-[450px] md:h-[550px] md:w-[550px]">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-2xl"></div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] rounded-xl bg-white dark:bg-slate-900 shadow-lg border border-slate-200 dark:border-slate-800 overflow-hidden p-6">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-purple-500"></div>
-                  <div className="space-y-5">
-                    <div className="h-8 w-3/4 rounded-md bg-slate-100 dark:bg-slate-800"></div>
-                    <div className="h-24 rounded-md bg-slate-100 dark:bg-slate-800"></div>
-                    <div className="space-y-2">
-                      <div className="h-4 w-full rounded-md bg-slate-100 dark:bg-slate-800"></div>
-                      <div className="h-4 w-full rounded-md bg-slate-100 dark:bg-slate-800"></div>
-                      <div className="h-4 w-3/4 rounded-md bg-slate-100 dark:bg-slate-800"></div>
-                    </div>
-                    <div className="flex justify-end">
-                      <div className="h-8 w-24 rounded-md bg-primary"></div>
-                    </div>
-                  </div>
+                <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] rounded-xl overflow-hidden">
+                  <ReviewWidget />
                 </div>
               </div>
             </div>
