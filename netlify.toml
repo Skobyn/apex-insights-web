@@ -2,15 +2,15 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "npm run build"
-  publish = ".next"
+  command = "npm run build && npx next export"
+  publish = "out"
   functions = "netlify/functions"
 
 [dev]
   command = "npm run dev"
   port = 8888
   targetPort = 3000
-  publish = ".next"
+  publish = "out"
   framework = "nextjs"
 
 [[plugins]]
@@ -29,7 +29,7 @@
 #   force = true
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "false"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
   NODE_VERSION = "18"
   NPM_FLAGS = "--version"
 

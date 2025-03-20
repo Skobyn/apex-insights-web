@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  distDir: process.env.NODE_ENV === "production" ? "build" : ".next",
-  output: 'standalone',
+  distDir: 'out',
+  output: 'export',
   images: {
+    unoptimized: true,
     domains: [
       "same-assets.com",
       "ext.same-assets.com",
