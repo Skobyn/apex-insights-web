@@ -9,7 +9,7 @@ export function HeroSection() {
   return (
     <section className="relative py-5 md:py-7 overflow-hidden bg-gradient-to-b from-blue-50 to-white dark:from-slate-950 dark:to-slate-900">
       <div className="container px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+        <div className="grid gap-8 lg:grid-cols-[1fr_600px] lg:gap-12 xl:grid-cols-[1fr_720px]">
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
@@ -49,13 +49,8 @@ export function HeroSection() {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <div className="relative h-[550px] w-[350px] sm:h-[650px] sm:w-[450px] md:h-[800px] md:w-[600px]">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-2xl"></div>
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                <div className="relative h-[500px] w-[320px] sm:h-[600px] sm:w-[420px] md:h-[750px] md:w-[550px] rounded-xl overflow-hidden">
-                  <ReviewWidget />
-                </div>
-              </div>
+            <div className="w-full">
+              <ReviewWidget />
             </div>
           </div>
         </div>
