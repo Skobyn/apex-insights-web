@@ -56,7 +56,7 @@ const services: Service[] = [
     icon: <Search className="h-12 w-12 text-primary" />,
     title: "SEO Services",
     description: "Improve your online visibility and drive more qualified traffic to your website with targeted SEO strategies.",
-    link: "/#seo",
+    link: "/seo-consulting",
     features: ["Keyword Research", "On-Page Optimization", "Content Strategy", "Technical SEO"]
   },
   {

@@ -196,7 +196,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
         return {
           icon: <BarChart className="h-12 w-12 text-primary" />,
           title: "Get Your Top 3 Process Bottlenecks Identified",
-          description: "Our experts will analyze your business processes and identify the top 3 areas where you're losing time and money. Limited time offer: Just $27 (normally $97).",
+          description: "Our experts will analyze your business processes and identify the top 3 areas where you're losing time and money. Limited time offer: Just $197 (normally $597).",
           primaryButtonText: "Start My Process Analysis",
           hasSecondaryButton: false,
           formFields: ["name", "email", "company", "phone"]
@@ -205,7 +205,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
         return {
           icon: <ArrowRight className="h-12 w-12 text-primary" />,
           title: "One More Step!",
-          description: "Want to add our Customizable Process Mapping Template to visualize your improvements for just $7 more?",
+          description: "Want to add our Customizable Process Mapping Template to visualize your improvements for just $57 more?",
           primaryButtonText: "Yes, Add the Template",
           secondaryButtonText: "No Thanks",
           hasSecondaryButton: true,
