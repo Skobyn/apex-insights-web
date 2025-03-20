@@ -15,8 +15,7 @@ export default function SEOConsultingPage() {
     name: "",
     email: "",
     phone: "",
-    website: "",
-    message: ""
+    website: ""
   });
   
   const [formErrors, setFormErrors] = useState<{[key: string]: string}>({});
@@ -82,8 +81,7 @@ export default function SEOConsultingPage() {
         name: "",
         email: "",
         phone: "",
-        website: "",
-        message: ""
+        website: ""
       });
     } catch (error) {
       toast.error("There was an error submitting the form. Please try again.");
@@ -221,20 +219,6 @@ export default function SEOConsultingPage() {
                       </div>
                     </div>
                     
-                    <div>
-                      <div className="relative">
-                        <textarea 
-                          id="message" 
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange} 
-                          rows={4} 
-                          className="w-full px-4 py-3 border border-slate-300 dark:border-slate-700 rounded-md focus:ring-primary focus:border-primary dark:bg-slate-800 dark:text-white" 
-                          placeholder="Message"
-                        />
-                      </div>
-                    </div>
-                    
                     <div className="flex items-start">
                       <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded w-full">
                         <div className="text-xs text-slate-500 flex items-center justify-between">
@@ -252,10 +236,23 @@ export default function SEOConsultingPage() {
                     
                     <Button 
                       type="submit" 
-                      className="w-full bg-[#b9d234] hover:bg-[#a8be2d] text-black font-bold py-3 px-4 rounded uppercase"
+                      className="w-full bg-[#b9d234] hover:bg-[#a8be2d] text-black font-bold py-3 px-4 rounded uppercase transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg relative overflow-hidden group"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Submitting..." : "Submit"}
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        {isSubmitting ? (
+                          <>
+                            <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                            <span>Submitting...</span>
+                          </>
+                        ) : (
+                          <>
+                            Get Your Free SEO Consultation
+                            <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                          </>
+                        )}
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </Button>
                     
                     <p className="text-xs text-slate-500 text-center">
