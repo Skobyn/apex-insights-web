@@ -97,7 +97,7 @@ export default function SEOConsultingPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section with Form */}
-        <section className="py-20 md:py-32 bg-gradient-to-b from-primary/5 to-primary/10">
+        <section className="py-5 md:py-8 bg-gradient-to-b from-primary/5 to-primary/10">
           <div className="container px-4 md:px-6">
             <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
               <div className="space-y-6">
