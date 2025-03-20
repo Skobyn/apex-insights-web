@@ -436,20 +436,33 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
       }
       
       // Also submit to serverless function
-      await fetch('/.netlify/functions/submit-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          serviceType,
-          selectedUpgrades: selectedUpgrades.length > 0 ? selectedUpgrades : undefined,
-          orderBump: currentContent.isOrderBump ? selectedBump : undefined,
-          formType: 'lead-gen',
-          submittedAt: new Date().toISOString()
-        }),
-      });
+      try {
+        const serverlessResponse = await fetch('/.netlify/functions/submit-form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            serviceType,
+            selectedUpgrades: selectedUpgrades.length > 0 ? selectedUpgrades : undefined,
+            orderBump: currentContent.isOrderBump ? selectedBump : undefined,
+            formType: 'lead-gen',
+            submittedAt: new Date().toISOString()
+          }),
+        });
+        
+        if (!serverlessResponse.ok) {
+          const errorData = await serverlessResponse.json();
+          console.error("Serverless function error:", errorData);
+          throw new Error(`Serverless function failed with status: ${serverlessResponse.status}`);
+        }
+        
+        const responseData = await serverlessResponse.json();
+        console.log("Serverless function response:", responseData);
+      } catch (serverlessError) {
+        console.error("Serverless function submission error:", serverlessError);
+      }
       
       console.log("Form submitted successfully");
     } catch (error) {
