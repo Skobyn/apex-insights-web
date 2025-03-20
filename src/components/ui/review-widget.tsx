@@ -6,18 +6,38 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const reviews = [
   {
-    text: "\"This community was an extremely beautiful,peaceful. Everything was so beautiful that I felt like I was at a resort.\"",
-    author: "Ritika poul",
+    text: "\"Apex Insights transformed our marketing strategy with their AI solutions. The automation tools they implemented saved us 15+ hours weekly and increased our conversion rates by 32%.\"",
+    author: "Michael Thompson",
+    position: "Marketing Director",
+    company: "TechGrowth Solutions",
     rating: 5
   },
   {
-    text: "\"My experience with matheran is like in heaven.I am found of nature.Excellent place to hangout & cool Atmosphere.\"",
-    author: "Maran Calzoni",
+    text: "\"Their SEO consulting services delivered exactly what we needed. Within 3 months, our organic traffic increased by 78% and we're now ranking on page 1 for our target keywords.\"",
+    author: "Sarah Johnson",
+    position: "E-commerce Manager",
+    company: "Retail Innovations",
     rating: 5
   },
   {
-    text: "\"Amazing product in this price range Light weight.The material is high-quality and very comfortable & Stylish.\"",
-    author: "Shlok Gupta",
+    text: "\"The business analytics platform Apex built for us provides actionable insights we never had access to before. It's completely changed how we make decisions and allocate resources.\"",
+    author: "David Chen",
+    position: "Operations Director",
+    company: "Summit Manufacturing",
+    rating: 5
+  },
+  {
+    text: "\"Apex's process improvement consultation helped us identify and eliminate inefficiencies we didn't even know existed. Our productivity is up 40% and costs are down significantly.\"",
+    author: "Jennifer Williams",
+    position: "COO",
+    company: "HealthTech Services",
+    rating: 5
+  },
+  {
+    text: "\"The IT consulting team at Apex Insights modernized our entire tech stack while ensuring zero downtime. Their expertise in cloud migration saved us thousands in potential lost revenue.\"",
+    author: "Robert Miller",
+    position: "CTO",
+    company: "Financial Solutions Group",
     rating: 5
   }
 ];
@@ -106,7 +126,12 @@ export function ReviewWidget() {
                   <div className="h-8 w-8 rounded-full overflow-hidden bg-slate-200 mr-2 flex items-center justify-center text-sm font-medium text-slate-600">
                     {reviews[activeIndex].author.charAt(0)}
                   </div>
-                  <span className="text-xs font-medium">{reviews[activeIndex].author}</span>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-medium">{reviews[activeIndex].author}</span>
+                    {reviews[activeIndex].position && reviews[activeIndex].company && (
+                      <span className="text-xs text-slate-500">{reviews[activeIndex].position}, {reviews[activeIndex].company}</span>
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -148,7 +173,12 @@ export function ReviewWidget() {
                   <div className="h-8 w-8 rounded-full overflow-hidden bg-slate-200 mr-2 flex items-center justify-center text-sm font-medium text-slate-600">
                     {reviews[secondCardIndex].author.charAt(0)}
                   </div>
-                  <span className="text-xs font-medium">{reviews[secondCardIndex].author}</span>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-medium">{reviews[secondCardIndex].author}</span>
+                    {reviews[secondCardIndex].position && reviews[secondCardIndex].company && (
+                      <span className="text-xs text-slate-500">{reviews[secondCardIndex].position}, {reviews[secondCardIndex].company}</span>
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
