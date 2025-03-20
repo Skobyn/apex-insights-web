@@ -49,10 +49,10 @@ export function HeroSection() {
             </div>
           </div>
           <div className="flex items-center justify-center">
-            <div className="relative h-[350px] w-[350px] sm:h-[450px] sm:w-[450px] md:h-[550px] md:w-[550px]">
+            <div className="relative h-[400px] w-[350px] sm:h-[500px] sm:w-[450px] md:h-[650px] md:w-[550px]">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 blur-2xl"></div>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-                <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] rounded-xl overflow-hidden">
+                <div className="relative h-[350px] w-[300px] sm:h-[450px] sm:w-[400px] rounded-xl overflow-hidden">
                   <ReviewWidget />
                 </div>
               </div>
