@@ -154,7 +154,14 @@ export default function AIAutomationsPage() {
                     GET A FREE AI AUTOMATION CONSULTATION
                   </h3>
                   
-                  <form className="space-y-4" onSubmit={handleSubmit}>
+                  <form 
+                    name="ai-automations"
+                    method="POST"
+                    data-netlify="true"
+                    className="space-y-4" 
+                    onSubmit={handleSubmit}
+                  >
+                    <input type="hidden" name="form-name" value="ai-automations" />
                     <div>
                       <div className="relative">
                         <input 

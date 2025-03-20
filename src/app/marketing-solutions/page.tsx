@@ -154,7 +154,14 @@ export default function MarketingSolutionsPage() {
                     GET A FREE MARKETING STRATEGY
                   </h3>
                   
-                  <form className="space-y-4" onSubmit={handleSubmit}>
+                  <form 
+                    name="marketing-solutions"
+                    method="POST"
+                    data-netlify="true"
+                    className="space-y-4" 
+                    onSubmit={handleSubmit}
+                  >
+                    <input type="hidden" name="form-name" value="marketing-solutions" />
                     <div>
                       <div className="relative">
                         <input 

@@ -68,7 +68,18 @@ export default function SEOConsultingPage() {
     setIsSubmitting(true);
     
     try {
-      // Send data to our Netlify serverless function
+      // Get form data
+      const form = e.target as HTMLFormElement;
+      const formDataObj = new FormData(form);
+      
+      // Netlify form submission
+      const netlifyResponse = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formDataObj as any).toString()
+      });
+      
+      // Also send data to our serverless function
       const response = await fetch('/.netlify/functions/submit-form', {
         method: 'POST',
         headers: {
@@ -148,7 +159,14 @@ export default function SEOConsultingPage() {
                     GET A FREE SEO CONSULTATION
                   </h3>
                   
-                  <form className="space-y-4" onSubmit={handleSubmit}>
+                  <form 
+                    name="seo-consulting"
+                    method="POST"
+                    data-netlify="true"
+                    className="space-y-4" 
+                    onSubmit={handleSubmit}
+                  >
+                    <input type="hidden" name="form-name" value="seo-consulting" />
                     <div>
                       <div className="relative">
                         <input 

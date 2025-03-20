@@ -156,7 +156,14 @@ export default function ProcessImprovementPage() {
                     GET A FREE EFFICIENCY ASSESSMENT
                   </h3>
                   
-                  <form className="space-y-4" onSubmit={handleSubmit}>
+                  <form 
+                    name="process-improvement"
+                    method="POST"
+                    data-netlify="true"
+                    className="space-y-4" 
+                    onSubmit={handleSubmit}
+                  >
+                    <input type="hidden" name="form-name" value="process-improvement" />
                     <div>
                       <div className="relative">
                         <input 

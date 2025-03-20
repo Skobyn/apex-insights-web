@@ -410,7 +410,14 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
         <div className="py-4">
           {/* Form fields */}
           {(currentContent.formFields && currentContent.formFields.length > 0) && (
-            <form className="space-y-4">
+            <form 
+              name="lead-gen"
+              method="POST"
+              data-netlify="true"
+              className="space-y-4"
+            >
+              <input type="hidden" name="form-name" value="lead-gen" />
+              <input type="hidden" name="service-type" value={serviceType} />
               {(currentContent.formFields && currentContent.formFields.includes("name")) && (
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name</Label>

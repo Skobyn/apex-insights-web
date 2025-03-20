@@ -41,21 +41,41 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you would send the form data to your backend
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    // Reset form after submission (in real implementation, only do this after successful submission)
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        message: "",
-        services: []
+    
+    // Get form data for Netlify submission
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    // Add services array as a string
+    formData.set('services', JSON.stringify(formData.getAll('services')));
+    
+    // Submit to Netlify
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString()
+    })
+      .then(() => {
+        console.log("Form submitted successfully");
+        setSubmitted(true);
+        
+        // Reset form after submission
+        setTimeout(() => {
+          setFormData({
+            name: "",
+            email: "",
+            company: "",
+            phone: "",
+            message: "",
+            services: []
+          });
+          setSubmitted(false);
+        }, 5000);
+      })
+      .catch(error => {
+        console.error("Form submission error:", error);
+        alert("There was a problem submitting your form. Please try again.");
       });
-      setSubmitted(false);
-    }, 5000);
   };
 
   return (
@@ -93,7 +113,14 @@ export function ContactSection() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form 
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  onSubmit={handleSubmit} 
+                  className="space-y-4"
+                >
+                  <input type="hidden" name="form-name" value="contact" />
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
@@ -157,6 +184,8 @@ export function ContactSection() {
                         <label key={service} className="flex items-center space-x-2 text-sm">
                           <input
                             type="checkbox"
+                            name="services"
+                            value={service}
                             checked={formData.services.includes(service)}
                             onChange={() => handleCheckboxChange(service)}
                             className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"

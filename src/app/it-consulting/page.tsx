@@ -152,7 +152,14 @@ export default function ITConsultingPage() {
                     GET A FREE IT CONSULTATION
                   </h3>
                   
-                  <form className="space-y-4" onSubmit={handleSubmit}>
+                  <form 
+                    name="it-consulting"
+                    method="POST"
+                    data-netlify="true"
+                    className="space-y-4" 
+                    onSubmit={handleSubmit}
+                  >
+                    <input type="hidden" name="form-name" value="it-consulting" />
                     <div>
                       <div className="relative">
                         <input 

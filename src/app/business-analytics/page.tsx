@@ -150,7 +150,14 @@ export default function BusinessAnalyticsPage() {
                     GET A FREE DATA ANALYSIS
                   </h3>
                   
-                  <form className="space-y-4" onSubmit={handleSubmit}>
+                  <form 
+                    name="business-analytics"
+                    method="POST"
+                    data-netlify="true"
+                    className="space-y-4" 
+                    onSubmit={handleSubmit}
+                  >
+                    <input type="hidden" name="form-name" value="business-analytics" />
                     <div>
                       <div className="relative">
                         <input 
