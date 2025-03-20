@@ -2,7 +2,7 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "npm run build"
+  command = "npm run build && cd netlify/functions && npm install"
   publish = "out"
   functions = "netlify/functions"
 
@@ -15,6 +15,9 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
 
 [[redirects]]
   from = "/api/*"
