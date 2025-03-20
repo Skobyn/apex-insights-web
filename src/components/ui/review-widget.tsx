@@ -1,5 +1,6 @@
 "use client";
 
+// Review widget with service-specific testimonials
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
