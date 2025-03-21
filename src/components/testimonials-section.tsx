@@ -80,15 +80,15 @@ export function TestimonialsSection() {
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
-          <div className="overflow-hidden">
+          <div className="overflow-visible">
             <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-6 md:px-12">
-                  <Card className="border-0 shadow-md relative min-h-[300px] md:min-h-[280px] w-full">
-                    <div className="absolute top-0 left-0 -translate-y-1/2 translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-md">
+                <div key={index} className="w-full flex-shrink-0 px-8 md:px-16">
+                  <Card className="border-0 shadow-md relative min-h-[300px] md:min-h-[280px] w-full mt-6">
+                    <div className="absolute top-4 left-4 -translate-y-1/2 -translate-x-1/3 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-md">
                       <Quote className="h-5 w-5 text-white" />
                     </div>
                     <CardContent className="pt-12 px-4 md:px-8 pb-6">
