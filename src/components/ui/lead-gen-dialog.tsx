@@ -106,7 +106,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
         return {
           icon: <Calendar className="h-12 w-12 text-primary" />,
           title: "Let's Review Your SEO Analysis Together",
-          description: "Great! Our SEO specialists will analyze your website and prepare a personalized report. When would you like to schedule a 15-minute call to review the findings?",
+          description: "Great! Our SEO specialists will analyze your website and prepare a personalized report. When would you like to schedule a 30-minute call to review the findings?",
           primaryButtonText: "Schedule My Call",
           hasSecondaryButton: false,
           isCalendar: true
