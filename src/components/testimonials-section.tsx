@@ -72,10 +72,10 @@ export function TestimonialsSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto max-w-4xl px-8">
+        <div className="relative mx-auto max-w-5xl px-4 md:px-8">
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary"
+            className="absolute left-0 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary z-10"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -86,12 +86,12 @@ export function TestimonialsSection() {
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
-                  <Card className="border-0 shadow-md relative min-h-[280px]">
+                <div key={index} className="w-full flex-shrink-0 px-6 md:px-12">
+                  <Card className="border-0 shadow-md relative min-h-[300px] md:min-h-[280px] w-full">
                     <div className="absolute top-0 left-0 -translate-y-1/2 translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-md">
                       <Quote className="h-5 w-5 text-white" />
                     </div>
-                    <CardContent className="pt-12 px-6 pb-6">
+                    <CardContent className="pt-12 px-4 md:px-8 pb-6">
                       <blockquote className="space-y-6">
                         <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
                           {testimonial.quote}
@@ -111,7 +111,7 @@ export function TestimonialsSection() {
           </div>
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary"
+            className="absolute right-0 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary z-10"
             aria-label="Next testimonial"
           >
             <ChevronRight className="h-4 w-4" />
@@ -132,7 +132,6 @@ export function TestimonialsSection() {
             ))}
           </div>
         </div>
-          
       </div>
     </section>
   );
