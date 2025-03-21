@@ -7,35 +7,35 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const reviews = [
   {
-    text: "\"Apex Insights transformed our marketing strategy with their AI solutions. The automation tools they implemented saved us 15+ hours weekly and increased our conversion rates by 32%.\"",
+    text: "Apex Insights transformed our marketing strategy with their AI solutions. The automation tools they implemented saved us 15+ hours weekly and increased our conversion rates by 32%.",
     author: "Michael Thompson",
     position: "Marketing Director",
     company: "TechGrowth Solutions",
     rating: 5
   },
   {
-    text: "\"Their SEO consulting services delivered exactly what we needed. Within 3 months, our organic traffic increased by 78% and we're now ranking on page 1 for our target keywords.\"",
+    text: "Their SEO consulting services delivered exactly what we needed. Within 3 months, our organic traffic increased by 78% and we're now ranking on page 1 for our target keywords.",
     author: "Sarah Johnson",
     position: "E-commerce Manager",
     company: "Retail Innovations",
     rating: 5
   },
   {
-    text: "\"The business analytics platform Apex built for us provides actionable insights we never had access to before. It's completely changed how we make decisions and allocate resources.\"",
+    text: "The business analytics platform Apex built for us provides actionable insights we never had access to before. It's completely changed how we make decisions and allocate resources.",
     author: "David Chen",
     position: "Operations Director",
     company: "Summit Manufacturing",
     rating: 5
   },
   {
-    text: "\"Apex's process improvement consultation helped us identify and eliminate inefficiencies we didn't even know existed. Our productivity is up 40% and costs are down significantly.\"",
+    text: "Apex's process improvement consultation helped us identify and eliminate inefficiencies we didn't even know existed. Our productivity is up 40% and costs are down significantly.",
     author: "Jennifer Williams",
     position: "COO",
     company: "HealthTech Services",
     rating: 5
   },
   {
-    text: "\"The IT consulting team at Apex Insights modernized our entire tech stack while ensuring zero downtime. Their expertise in cloud migration saved us thousands in potential lost revenue.\"",
+    text: "The IT consulting team at Apex Insights modernized our entire tech stack while ensuring zero downtime. Their expertise in cloud migration saved us thousands in potential lost revenue.",
     author: "Robert Miller",
     position: "CTO",
     company: "Financial Solutions Group",
@@ -119,7 +119,7 @@ export function ReviewWidget() {
                 
                 {/* Review text */}
                 <p className="text-sm text-slate-700 mb-4">
-                  {reviews[activeIndex].text}
+                  "{reviews[activeIndex].text}"
                 </p>
                 
                 {/* Author with avatar */}
@@ -166,7 +166,7 @@ export function ReviewWidget() {
                 
                 {/* Review text */}
                 <p className="text-sm text-slate-700 mb-4">
-                  {reviews[secondCardIndex].text}
+                  "{reviews[secondCardIndex].text}"
                 </p>
                 
                 {/* Author with avatar */}
