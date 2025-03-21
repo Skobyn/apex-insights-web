@@ -86,14 +86,14 @@ export function TestimonialsSection() {
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0">
-                  <Card className="border-0 shadow-md relative">
+                <div key={index} className="w-full flex-shrink-0 px-4">
+                  <Card className="border-0 shadow-md relative min-h-[280px]">
                     <div className="absolute -top-4 -left-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-md">
                       <Quote className="h-5 w-5 text-white" />
                     </div>
-                    <CardContent className="pt-10">
-                      <blockquote className="space-y-6 pb-4">
-                        <p className="text-lg text-slate-700 dark:text-slate-300">
+                    <CardContent className="pt-12 px-6 pb-6">
+                      <blockquote className="space-y-6">
+                        <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
                           {testimonial.quote}
                         </p>
                         <footer className="border-t border-slate-200 pt-4 dark:border-slate-800">
