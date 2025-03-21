@@ -21,7 +21,7 @@ export function CTASection() {
               text="Schedule a Free Consultation" 
               className="text-primary bg-white hover:bg-white/90 font-medium" 
             />
-            <Button size="lg" variant="outline" className="bg-black border-white hover:bg-black/80 text-white" asChild>
+            <Button size="lg" variant="outline" className="bg-transparent border-white hover:bg-white/10 text-white" asChild>
               <Link href="/#services">
                 Explore Our Services
               </Link>
