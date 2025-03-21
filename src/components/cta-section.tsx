@@ -19,7 +19,7 @@ export function CTASection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
             <CalendlyButton 
               text="Schedule a Free Consultation" 
-              className="text-primary bg-white hover:bg-white/90 font-medium" 
+              className="text-blue-500 bg-white hover:bg-white/90 font-medium" 
             />
             <Button size="lg" variant="outline" className="bg-transparent border-white hover:bg-white/10 text-white" asChild>
               <Link href="/#services">
