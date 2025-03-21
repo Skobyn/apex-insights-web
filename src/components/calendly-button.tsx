@@ -16,18 +16,15 @@ interface CalendlyButtonProps {
   serviceType?: string;
   text?: string;
   className?: string;
-  rootElement?: HTMLElement;
 }
 
 export function CalendlyButton({ 
   url = "https://calendly.com/skobyn/process-improvement-clone-1", 
   serviceType,
   text = "Schedule a Call",
-  className = "",
-  rootElement
+  className = ""
 }: CalendlyButtonProps) {
   // State to track if we're in the browser
-  const [isBrowser, setIsBrowser] = useState(false);
   const [mounted, setMounted] = useState(false);
   
   // Determine which Calendly URL to use based on service type
@@ -61,7 +58,6 @@ export function CalendlyButton({
 
   // We need to use useEffect to access document because Next.js does server-side rendering
   useEffect(() => {
-    setIsBrowser(true);
     setMounted(true);
   }, []);
 
@@ -78,7 +74,7 @@ export function CalendlyButton({
   return (
     <PopupButton
       url={calendlyUrl}
-      rootElement={typeof document !== 'undefined' ? document.body : undefined}
+      rootElement={document.body}
       text={text}
       className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 ${className}`}
     >
