@@ -86,25 +86,24 @@ export function TestimonialsSection() {
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={index} className="w-full flex-shrink-0">
+                <div key={index} className="w-full flex-shrink-0 relative">
+                  <div className="absolute -top-4 -left-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-md">
+                    <Quote className="h-5 w-5 text-white" />
+                  </div>
+
                   <Card className="border-0 shadow-md">
                     <CardContent className="pt-10">
-                      <div className="relative">
-                        <div className="absolute -top-6 left-0 flex h-12 w-12 items-center justify-center rounded-full bg-primary">
-                          <Quote className="h-6 w-6 text-white" />
-                        </div>
-                        <blockquote className="space-y-6 pb-4">
-                          <p className="text-lg italic text-slate-700 dark:text-slate-300">
-                            &ldquo;{testimonial.quote}&rdquo;
-                          </p>
-                          <footer className="border-t border-slate-200 pt-4 dark:border-slate-800">
-                            <div className="font-medium">{testimonial.author}</div>
-                            <div className="text-sm text-slate-500 dark:text-slate-400">
-                              {testimonial.position}, {testimonial.company}
-                            </div>
-                          </footer>
-                        </blockquote>
-                      </div>
+                      <blockquote className="space-y-6 pb-4">
+                        <p className="text-lg italic text-slate-700 dark:text-slate-300">
+                          {testimonial.quote}
+                        </p>
+                        <footer className="border-t border-slate-200 pt-4 dark:border-slate-800">
+                          <div className="font-medium">{testimonial.author}</div>
+                          <div className="text-sm text-slate-500 dark:text-slate-400">
+                            {testimonial.position}, {testimonial.company}
+                          </div>
+                        </footer>
+                      </blockquote>
                     </CardContent>
                   </Card>
                 </div>
