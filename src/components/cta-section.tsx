@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { CalendlyButton } from "@/components/calendly-button";
 
 export function CTASection() {
   return (
@@ -16,11 +17,10 @@ export function CTASection() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/#contact" className="inline-flex items-center gap-2">
-                Schedule a Free Consultation <ArrowRight size={16} />
-              </Link>
-            </Button>
+            <CalendlyButton 
+              text="Schedule a Free Consultation" 
+              className="text-primary bg-white hover:bg-white/90" 
+            />
             <Button size="lg" variant="outline" className="bg-transparent border-white hover:bg-white/10 text-white" asChild>
               <Link href="/#services">
                 Explore Our Services

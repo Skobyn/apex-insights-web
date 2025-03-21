@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, Download, Calendar, Clock, ArrowRight, FileText, BarChart } from "lucide-react";
+import { CalendlyWidget } from "@/components/ui/calendly-widget";
 
 type ServiceType = 
   | "AI Automations"
@@ -205,7 +206,7 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
         return {
           icon: <ArrowRight className="h-12 w-12 text-primary" />,
           title: "One More Step!",
-          description: "Want to add our Customizable Process Mapping Template to visualize your improvements for just $57 more?",
+          description: "Want to add our Customizable Process Mapping Template to visualize your improvements for just $17 more?",
           primaryButtonText: "Yes, Add the Template",
           secondaryButtonText: "No Thanks",
           hasSecondaryButton: true,
@@ -471,6 +472,26 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
   };
 
   const handleSecondaryButtonClick = () => {
+    // If we're in the final step (like in AI Automations funnel)
+    if (currentContent.isFinal) {
+      // Reset and close on final step
+      setTimeout(() => {
+        setCurrentStep(1);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          website: ""
+        });
+        setSelectedBump(false);
+        setSelectedUpgrades([]);
+        onOpenChange(false);
+      }, 500);
+      return;
+    }
+    
+    // Otherwise just proceed to the next step
     setCurrentStep(prev => prev + 1);
   };
 
@@ -564,19 +585,10 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
             </form>
           )}
 
-          {/* Calendar placeholder */}
+          {/* Calendar using Calendly */}
           {currentContent.isCalendar && (
-            <div className="border p-4 rounded-lg text-center">
-              <p className="text-slate-500 mb-2">Select a date and time:</p>
-              <div className="grid grid-cols-2 gap-2 mb-4">
-                {['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].map(day => (
-                  <Button key={day} variant="outline" className="text-xs py-1">{day}</Button>
-                ))}
-                {['10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM'].map(time => (
-                  <Button key={time} variant="outline" className="text-xs py-1">{time}</Button>
-                ))}
-              </div>
-              <p className="text-xs text-slate-400">* In a real implementation, this would be a calendar selector</p>
+            <div className="border rounded-lg overflow-hidden">
+              <CalendlyWidget serviceType={serviceType} />
             </div>
           )}
 
@@ -591,8 +603,8 @@ export function LeadGenDialog({ open, onOpenChange, serviceType }: LeadGenDialog
                   className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                 />
                 <div>
-                  <p className="font-medium">Yes! Add the Process Mapping Template for just $7</p>
-                  <p className="text-sm text-slate-500">Visualize your process improvements with our easy-to-use template (Normally $27)</p>
+                  <p className="font-medium">Yes! Add the Process Mapping Template for just $17</p>
+                  <p className="text-sm text-slate-500">Visualize your process improvements with our easy-to-use template (Normally $57)</p>
                 </div>
               </label>
             </div>
