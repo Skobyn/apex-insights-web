@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import dynamic from "next/dynamic";
+import { cn } from "@/lib/utils";
 
 // Dynamically import the PopupButton with no SSR
 const PopupButton = dynamic(
@@ -61,6 +62,9 @@ export function CalendlyButton({
     setMounted(true);
   }, []);
 
+  // Default button styles that will be used if no custom className is provided
+  const defaultButtonStyles = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2";
+  
   // If not mounted (server-side), render a standard button
   if (!mounted) {
     return (
@@ -71,13 +75,18 @@ export function CalendlyButton({
   }
 
   // Once we're in the browser, use the PopupButton from react-calendly
-  // Remove children from PopupButton as it doesn't support them
+  // If className is empty, add default primary styling
+  const buttonClassName = cn(
+    defaultButtonStyles,
+    className ? className : "bg-primary text-primary-foreground hover:bg-primary/90"
+  );
+  
   return (
     <PopupButton
       url={calendlyUrl}
       rootElement={document.body}
       text={text}
-      className={`inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 ${className}`}
+      className={buttonClassName}
     />
   );
 }
