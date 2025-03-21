@@ -117,13 +117,13 @@ export function ReviewWidget() {
                   </div>
                 </div>
                 
-                {/* Review text with properly styled quotation marks */}
-                <div className="relative text-sm text-slate-700 mb-4 pl-6 pr-2">
-                  <span className="absolute left-0 top-0 text-3xl text-primary/40 leading-none">"</span>
-                  <p className="relative z-10">
+                {/* Review text with better positioned quotation marks */}
+                <div className="relative text-sm text-slate-700 mb-4 pt-3 pb-3 px-8">
+                  <span className="absolute left-0 top-0 text-4xl text-primary/30 leading-none" style={{ marginTop: '-5px' }}>"</span>
+                  <p className="relative">
                     {reviews[activeIndex].text}
                   </p>
-                  <span className="absolute right-0 bottom-0 text-3xl text-primary/40 leading-none">"</span>
+                  <span className="absolute right-0 bottom-0 text-4xl text-primary/30 leading-none" style={{ marginBottom: '-10px' }}>"</span>
                 </div>
                 
                 {/* Author with avatar */}
@@ -168,13 +168,13 @@ export function ReviewWidget() {
                   </div>
                 </div>
                 
-                {/* Review text with properly styled quotation marks */}
-                <div className="relative text-sm text-slate-700 mb-4 pl-6 pr-2">
-                  <span className="absolute left-0 top-0 text-3xl text-primary/40 leading-none">"</span>
-                  <p className="relative z-10">
+                {/* Review text with better positioned quotation marks */}
+                <div className="relative text-sm text-slate-700 mb-4 pt-3 pb-3 px-8">
+                  <span className="absolute left-0 top-0 text-4xl text-primary/30 leading-none" style={{ marginTop: '-5px' }}>"</span>
+                  <p className="relative">
                     {reviews[secondCardIndex].text}
                   </p>
-                  <span className="absolute right-0 bottom-0 text-3xl text-primary/40 leading-none">"</span>
+                  <span className="absolute right-0 bottom-0 text-4xl text-primary/30 leading-none" style={{ marginBottom: '-10px' }}>"</span>
                 </div>
                 
                 {/* Author with avatar */}
