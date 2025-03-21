@@ -88,7 +88,7 @@ export function TestimonialsSection() {
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-4">
                   <Card className="border-0 shadow-md relative min-h-[280px]">
-                    <div className="absolute -top-4 -left-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-md">
+                    <div className="absolute top-0 left-0 -translate-y-1/2 translate-x-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-primary shadow-md">
                       <Quote className="h-5 w-5 text-white" />
                     </div>
                     <CardContent className="pt-12 px-6 pb-6">
@@ -132,6 +132,7 @@ export function TestimonialsSection() {
             ))}
           </div>
         </div>
+          
       </div>
     </section>
   );
