@@ -117,10 +117,14 @@ export function ReviewWidget() {
                   </div>
                 </div>
                 
-                {/* Review text */}
-                <p className="text-sm text-slate-700 mb-4">
-                  "{reviews[activeIndex].text}"
-                </p>
+                {/* Review text with properly styled quotation marks */}
+                <div className="relative text-sm text-slate-700 mb-4 pl-6 pr-2">
+                  <span className="absolute left-0 top-0 text-3xl text-primary/40 leading-none">"</span>
+                  <p className="relative z-10">
+                    {reviews[activeIndex].text}
+                  </p>
+                  <span className="absolute right-0 bottom-0 text-3xl text-primary/40 leading-none">"</span>
+                </div>
                 
                 {/* Author with avatar */}
                 <div className="flex items-center mt-auto">
@@ -164,10 +168,14 @@ export function ReviewWidget() {
                   </div>
                 </div>
                 
-                {/* Review text */}
-                <p className="text-sm text-slate-700 mb-4">
-                  "{reviews[secondCardIndex].text}"
-                </p>
+                {/* Review text with properly styled quotation marks */}
+                <div className="relative text-sm text-slate-700 mb-4 pl-6 pr-2">
+                  <span className="absolute left-0 top-0 text-3xl text-primary/40 leading-none">"</span>
+                  <p className="relative z-10">
+                    {reviews[secondCardIndex].text}
+                  </p>
+                  <span className="absolute right-0 bottom-0 text-3xl text-primary/40 leading-none">"</span>
+                </div>
                 
                 {/* Author with avatar */}
                 <div className="flex items-center mt-auto">
