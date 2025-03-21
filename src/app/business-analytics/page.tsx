@@ -68,7 +68,29 @@ export default function BusinessAnalyticsPage() {
     setIsSubmitting(true);
     
     try {
-      // Send data to our Netlify serverless function
+      // Get form data for Netlify submission
+      const form = e.target as HTMLFormElement;
+      const formDataObj = new FormData(form);
+      
+      // Process form data for Netlify
+      const formEntries = Array.from(formDataObj.entries())
+        .filter(([_, value]) => typeof value === 'string')
+        .map(([key, value]) => [key, value.toString()]);
+        
+      // Submit to Netlify
+      const netlifyResponse = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formEntries).toString()
+      });
+      
+      if (!netlifyResponse.ok) {
+        console.error('Netlify form submission error:', await netlifyResponse.text());
+      } else {
+        console.log('Netlify form submission successful');
+      }
+      
+      // Send data to our serverless function for Supabase
       const response = await fetch('/.netlify/functions/submit-form', {
         method: 'POST',
         headers: {
