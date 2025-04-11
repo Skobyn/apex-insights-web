@@ -12,6 +12,7 @@
 *   [ ] Task 10: Implement marketing copy updates.
 *   [ ] Task 11: Refine AI Agent Workshop page (add real content: specific agenda, bios, links, countdown date).
 *   [ ] Task 13: Refine Gemini BI Quickstart page (add real content/links if needed).
+*   [ ] Task 15: Refine Workspace AI Boost page (add real content/links/pricing if needed).
 
 ## Upcoming Tasks
 
@@ -29,4 +30,5 @@
 *   [x] Add Avatar component (`src/components/ui/avatar.tsx`).
 *   [x] Add Countdown Timer component (`src/components/ui/countdown-timer.tsx`).
 *   [x] Implement visual enhancements (Hero, cards, countdown) for AI Agent Workshop page.
-*   [x] Task 12: Implement Gemini-Powered BI Quick Start landing page (`src/app/gemini-bi-quickstart/page.tsx`). 
+*   [x] Task 12: Implement Gemini-Powered BI Quick Start landing page (`src/app/gemini-bi-quickstart/page.tsx`).
+*   [x] Task 14: Implement Workspace AI Productivity Boost landing page (`src/app/workspace-ai-boost/page.tsx`). 
