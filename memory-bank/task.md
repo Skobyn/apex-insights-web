@@ -10,13 +10,13 @@
 *   [ ] Task 8: Implement the blog structure.
 *   [ ] Task 9: Implement social media links.
 *   [ ] Task 10: Implement marketing copy updates.
+*   [ ] Task 11: Refine AI Agent Workshop page (add real content: specific agenda, bios, links, countdown date).
 
 ## Upcoming Tasks
 
 *   [ ] Subsequent landing pages.
 *   [ ] Posting initial blog content.
 *   [ ] Further refinements based on feedback.
-*   [ ] Refine AI Agent Workshop page (add real content/bios).
 
 ## Completed Tasks
 
@@ -24,4 +24,7 @@
 *   [x] Initialize Memory Bank structure
 *   [x] Populate initial Memory Bank content (Revised for live site)
 *   [x] Task 2: Define content and structure for the first new landing page (AI Agent Workshop).
-*   [x] Task 7: Implement the first new landing page (`src/app/ai-agent-workshop/page.tsx`). 
+*   [x] Task 7: Implement the first new landing page (`src/app/ai-agent-workshop/page.tsx`).
+*   [x] Add Avatar component (`src/components/ui/avatar.tsx`).
+*   [x] Add Countdown Timer component (`src/components/ui/countdown-timer.tsx`).
+*   [x] Implement visual enhancements (Hero, cards, countdown) for AI Agent Workshop page. 

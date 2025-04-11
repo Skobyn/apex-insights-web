@@ -2,19 +2,21 @@
 
 ## Overall Status
 
-The website is live at getapexinsights.com. Work is ongoing to add new features and content, including a new landing page for the AI Agent Workshop.
+The website is live at getapexinsights.com. Work is ongoing to add new features and content. The AI Agent Workshop landing page structure is complete, and visual enhancements (Hero, cards, countdown) have been implemented.
 
 ## What Works?
 
 *   Core website structure and pages are deployed and functional.
 *   Displays services, testimonials (currently in `testimonials-section.tsx`).
-*   Likely includes contact/booking functionality (e.g., Calendly integration seen in `package.json`).
+*   Likely includes contact/booking functionality.
 *   Built with Next.js, React, Tailwind, Shadcn/ui.
-*   Initial version of the AI Agent Workshop landing page created at `src/app/ai-agent-workshop/page.tsx`.
+*   AI Agent Workshop landing page (`src/app/ai-agent-workshop/page.tsx`) created with enhanced visuals (Hero, styled cards, icons).
+*   `Avatar` component (`src/components/ui/avatar.tsx`) available.
+*   `CountdownTimer` component (`src/components/ui/countdown-timer.tsx`) available and integrated (with placeholder date).
 
 ## What's Left / In Progress?
 
-*   Refining the AI Agent Workshop landing page (adding specific content, bios, CTA links).
+*   Populating the AI Agent Workshop landing page with specific content (agenda details, consultant bios, CTA links, real countdown date).
 *   Adding subsequent new landing pages.
 *   Modifying the existing testimonial/review card component.
 *   Updating general marketing copy/materials on the site.
@@ -27,4 +29,4 @@ The website is live at getapexinsights.com. Work is ongoing to add new features 
 *   Need to define the specific structure and content for new landing pages (beyond the first one).
 *   Need details on the required modifications for the testimonial cards.
 *   Need the specific social media links and desired locations.
-*   AI Agent Workshop page requires specific details (agenda, bios, links). 
+*   AI Agent Workshop page requires specific details (agenda, bios, links, countdown date) to be finalized. 
