@@ -1,0 +1,30 @@
+# Project-Specific Rules & Patterns: Apex Insights Web
+
+This file captures learned patterns, preferences, and critical information specific to this project to improve efficiency and consistency, especially given memory resets between sessions.
+
+## Critical Implementation Paths
+
+*   Describe any non-obvious logic or crucial sequences here.
+
+## User Preferences
+
+*   Code style nuances (beyond linter/formatter if any).
+*   Preferred workflow steps or tools.
+
+## Project-Specific Patterns
+
+*   Common component structures or data flow patterns.
+*   Naming conventions specific to this project.
+
+## Known Workarounds & Challenges
+
+*   Document temporary fixes or persistent issues.
+
+## Evolution of Key Decisions
+
+*   Brief notes on why certain architectural or technical choices were made or changed.
+
+## Tool Usage/Commands
+
+*   Frequently used or project-specific terminal commands.
+*   Configuration details for specific tools. 
