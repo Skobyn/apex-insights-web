@@ -29,6 +29,13 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    /* Landscaping Palette */
+    --primary-green: 123 40% 39%; /* #388E3C */
+    --primary-green-foreground: 120 100% 98%; /* A light color for text on primary green */
+    --secondary-green: 124 44% 84%; /* #C8E6C9 */
+    --secondary-green-foreground: 123 40% 20%; /* Darker text for light green bg */
+    --accent-brown: 16 25% 38%; /* #795548 */
+    --accent-brown-foreground: 16 40% 98%; /* Light text for brown bg */
   }
 
   .dark {
@@ -56,6 +63,13 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    /* Landscaping Palette - Dark Theme */
+    --primary-green: 123 40% 49%; /* Slightly lighter green */
+    --primary-green-foreground: 120 20% 96%;
+    --secondary-green: 124 30% 25%; /* Darker, less saturated green */
+    --secondary-green-foreground: 124 44% 84%; /* Lighter text */
+    --accent-brown: 16 25% 48%; /* Slightly lighter brown */
+    --accent-brown-foreground: 16 20% 96%;
   }
 }
 

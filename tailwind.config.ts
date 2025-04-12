@@ -43,6 +43,19 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        /* Landscaping Palette */
+        'primary-green': {
+          DEFAULT: 'hsl(var(--primary-green))',
+          foreground: 'hsl(var(--primary-green-foreground))',
+        },
+        'secondary-green': {
+          DEFAULT: 'hsl(var(--secondary-green))',
+          foreground: 'hsl(var(--secondary-green-foreground))',
+        },
+        'accent-brown': {
+          DEFAULT: 'hsl(var(--accent-brown))',
+          foreground: 'hsl(var(--accent-brown-foreground))',
+        },
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
