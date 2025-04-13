@@ -202,7 +202,12 @@ export default function LandscapingLandingPage() {
              Let's build your custom growth plan. Schedule your free, no-obligation analysis today.
           </p>
           {/* Example Form (Needs state management and submission logic) */}
-          <form className="max-w-lg mx-auto space-y-4">
+          <form 
+            name="landscaping-analysis-request"
+            method="POST"
+            data-netlify="true"
+            className="max-w-lg mx-auto space-y-4"
+          >
             <input type="text" name="name" placeholder="Your Name" required 
                    className="w-full px-4 py-2 rounded-md text-foreground bg-background border border-border focus:ring-primary-green focus:border-primary-green" />
             <input type="text" name="company" placeholder="Company Name" required
