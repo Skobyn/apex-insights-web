@@ -23,24 +23,52 @@ declare global {
 }
 
 export default function OwnersPage() {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  const [loadError, setLoadError] = React.useState<string | null>(null);
+
   React.useEffect(() => {
-    // Load the Dialogflow Messenger script
-    const script = document.createElement('script');
-    script.src = "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js";
-    script.async = true;
-    document.head.appendChild(script);
+    // Check if scripts/styles are already loaded
+    const existingScript = document.querySelector('script[src*="df-messenger.js"]');
+    const existingLink = document.querySelector('link[href*="df-messenger-default.css"]');
+    
+    // Only load if not already present
+    if (!existingScript) {
+      try {
+        const script = document.createElement('script');
+        script.src = "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js";
+        script.async = true;
+        script.onload = () => {
+          setIsLoaded(true);
+          console.log("Dialogflow script loaded successfully");
+        };
+        script.onerror = (e) => {
+          console.error("Failed to load Dialogflow script:", e);
+          setLoadError("Failed to load Dialogflow script");
+        };
+        document.head.appendChild(script);
+      } catch (error) {
+        console.error("Error adding script:", error);
+        setLoadError(`Error adding script: ${error instanceof Error ? error.message : String(error)}`);
+      }
+    } else {
+      setIsLoaded(true);
+    }
 
-    // Create and append the stylesheet
-    const link = document.createElement('link');
-    link.rel = "stylesheet";
-    link.href = "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css";
-    document.head.appendChild(link);
+    if (!existingLink) {
+      try {
+        const link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = "https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css";
+        link.onload = () => console.log("Dialogflow styles loaded successfully");
+        link.onerror = (e) => console.error("Failed to load Dialogflow styles:", e);
+        document.head.appendChild(link);
+      } catch (error) {
+        console.error("Error adding stylesheet:", error);
+      }
+    }
 
-    // Clean up function
-    return () => {
-      document.head.removeChild(script);
-      document.head.removeChild(link);
-    };
+    // No cleanup needed - these resources should persist across component unmounts
+    // to avoid reloading issues
   }, []);
 
   return (
@@ -60,19 +88,26 @@ export default function OwnersPage() {
             <p className="mb-4">
               Have questions about SMB taxes? Our AI assistant can help you navigate tax-related questions for your small business.
             </p>
+            {loadError && (
+              <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md">
+                Error: {loadError}. Please refresh the page or try again later.
+              </div>
+            )}
           </div>
           
-          {/* Dialogflow Messenger Component - Will be created by useEffect */}
+          {/* Dialogflow Messenger Component - Will be rendered when script loads */}
           <div id="chatbot-container">
-            <df-messenger
-              project-id="n8nsb-451803"
-              agent-id="b86e0b04-b725-44ac-8e64-b7ee300d0531"
-              language-code="en"
-              max-query-length="-1">
-              <df-messenger-chat-bubble
-                chat-title="SMB Tax">
-              </df-messenger-chat-bubble>
-            </df-messenger>
+            {isLoaded && (
+              <df-messenger
+                project-id="n8nsb-451803"
+                agent-id="b86e0b04-b725-44ac-8e64-b7ee300d0531"
+                language-code="en"
+                max-query-length="-1">
+                <df-messenger-chat-bubble
+                  chat-title="SMB Tax">
+                </df-messenger-chat-bubble>
+              </df-messenger>
+            )}
           </div>
           
           {/* Custom styling for Dialogflow Messenger */}
