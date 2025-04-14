@@ -27,7 +27,7 @@ declare global {
 
 declare module 'react' {
   interface JSX {
-    IntrinsicElements {
+    intrinsicElements: {
       'df-messenger': DFMessengerProps;
       'df-messenger-chat-bubble': DFMessengerChatBubbleProps;
     }
