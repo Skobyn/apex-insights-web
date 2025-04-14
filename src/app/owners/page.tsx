@@ -3,7 +3,6 @@
 import React from 'react';
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import Head from "next/head";
 
 // Define custom element types using interfaces instead of namespaces
 type DFMessengerProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
@@ -19,15 +18,9 @@ type DFMessengerChatBubbleProps = React.DetailedHTMLProps<React.HTMLAttributes<H
 
 // Extend JSX IntrinsicElements via module augmentation
 declare global {
-  interface HTMLElementTagNameMap {
-    'df-messenger': HTMLElement;
-    'df-messenger-chat-bubble': HTMLElement;
-  }
-}
-
-declare module 'react' {
-  interface JSX {
-    intrinsicElements: {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    interface IntrinsicElements {
       'df-messenger': DFMessengerProps;
       'df-messenger-chat-bubble': DFMessengerChatBubbleProps;
     }
@@ -63,6 +56,7 @@ export default function OwnersPage() {
         setLoadError(`Error adding script: ${error instanceof Error ? error.message : String(error)}`);
       }
     } else {
+      // If script exists, assume it's loaded or loading
       setIsLoaded(true);
     }
 
