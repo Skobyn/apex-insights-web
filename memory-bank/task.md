@@ -13,6 +13,11 @@
 *   [ ] Task 11: Refine AI Agent Workshop page (add real content: specific agenda, bios, links, countdown date).
 *   [ ] Task 13: Refine Gemini BI Quickstart page (add real content/links if needed).
 *   [ ] Task 15: Refine Workspace AI Boost page (add real content/links/pricing if needed).
+*   [ ] Task 16: Configure Google Sheets (Combinations & All Data) for pSEO and publish as CSVs.
+*   [ ] Task 17: Set and verify environment variables for pSEO (`GOOGLE_SHEET_CSV_URL_COMBINATIONS`, `GOOGLE_SHEET_CSV_URL_ALL_DATA`, `NEXT_PUBLIC_BASE_URL`) in `.env.local`.
+*   [ ] Task 18: Verify data mapping logic in `src/lib/data.ts` matches Google Sheet columns.
+*   [ ] Task 19: Implement actual React components in `src/app/services/[location]/[service]/page.tsx` based on `landingtemplet.md` and connect to fetched data.
+*   [ ] Task 21: Add Owners page to the navigation menu in the Header component.
 
 ## Upcoming Tasks
 
@@ -31,4 +36,6 @@
 *   [x] Add Countdown Timer component (`src/components/ui/countdown-timer.tsx`).
 *   [x] Implement visual enhancements (Hero, cards, countdown) for AI Agent Workshop page.
 *   [x] Task 12: Implement Gemini-Powered BI Quick Start landing page (`src/app/gemini-bi-quickstart/page.tsx`).
-*   [x] Task 14: Implement Workspace AI Productivity Boost landing page (`src/app/workspace-ai-boost/page.tsx`). 
+*   [x] Task 14: Implement Workspace AI Productivity Boost landing page (`src/app/workspace-ai-boost/page.tsx`).
+*   [x] Task PSEO-Setup: Implement core pSEO structure (dynamic route, data fetching lib, sitemap).
+*   [x] Task 20: Create Owners page with Google Dialogflow chatbot integration. 

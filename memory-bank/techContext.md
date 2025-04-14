@@ -7,12 +7,13 @@
 *   Database: Potentially Supabase (PostgreSQL), Prisma ORM
 *   Styling: Tailwind CSS, tailwind-merge, tailwindcss-animate
 *   UI Components: Shadcn/ui (using Radix UI, Lucide Icons, clsx, cva)
-*   Key Libraries/Tools: next-themes, TypeScript, node-fetch
+*   Key Libraries/Tools: next-themes, TypeScript, node-fetch, papaparse
 *   Font: Geist (via next/font)
+*   Data Source: Google Sheets (via published CSV URLs)
 
 ## Setup Instructions
 
-See the root `README.md` for basic setup instructions (`npm run dev`, etc.).
+See the root `README.md` for basic setup instructions (`npm run dev`, etc.) and required Environment Variables for the pSEO functionality.
 
 ## Technical Constraints
 
@@ -21,6 +22,7 @@ See the root `README.md` for basic setup instructions (`npm run dev`, etc.).
 ## Dependencies
 
 *   Potentially Supabase
+*   papaparse (for CSV parsing)
 
 ## Repository URL
 

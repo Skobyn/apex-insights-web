@@ -2,7 +2,7 @@
 
 ## Overall Status
 
-The website is live at getapexinsights.com. Three new landing pages (AI Agent Workshop, Gemini BI Quickstart, Workspace AI Boost) have been created with an enhanced visual structure, ready for final content population.
+The website is live at getapexinsights.com. Three new landing pages (AI Agent Workshop, Gemini BI Quickstart, Workspace AI Boost) have been created with an enhanced visual structure, ready for final content population. Added a new "Owners" page with a Google Dialogflow chatbot integration for SMB Tax assistance.
 
 ## What Works?
 
@@ -15,6 +15,7 @@ The website is live at getapexinsights.com. Three new landing pages (AI Agent Wo
 *   Workspace AI Boost landing page (`src/app/workspace-ai-boost/page.tsx`) created with enhanced visuals.
 *   `Avatar` component (`src/components/ui/avatar.tsx`) available.
 *   `CountdownTimer` component (`src/components/ui/countdown-timer.tsx`) available.
+*   Owners page (`src/app/owners/page.tsx`) created with Google Dialogflow chatbot integration.
 
 ## What's Left / In Progress?
 
@@ -27,6 +28,7 @@ The website is live at getapexinsights.com. Three new landing pages (AI Agent Wo
 *   Adding a blog section and posting content.
 *   Adding links to social media profiles.
 *   Implementing a robust content management strategy (if needed for blogs/landing pages).
+*   Consider adding the Owners page to the navigation menu in the Header component.
 
 ## Known Issues / Blockers
 

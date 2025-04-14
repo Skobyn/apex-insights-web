@@ -1,0 +1,92 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Objective: Implement Programmatic SEO (pSEO) in a Next.js 15+ application using the App Router to generate multiple, optimized landing pages based on a defined template structure (e.g., the Apex Insights Landing Page Template).
+
+Core Concept: Automatically generate numerous landing pages, each targeting specific long-tail keywords or segments (e.g., "AI Automation Services in Miami", "SEO for Healthcare in Chicago"). Each generated page will follow a consistent, high-converting structure but feature dynamically populated content relevant to its target segment. Next.js's dynamic routing, server components, metadata generation, and caching capabilities are key enablers.
+
+Instructions for AI Agent:
+
+Set Up Dynamic Route Structure:
+
+Determine the parameters needed for your pSEO strategy (e.g., location, service type, industry).
+Inside the app directory, create a folder structure reflecting the desired URL pattern using dynamic segments.
+Example: For URLs like /services/miami/ai-automation, create app/services/[location]/[service]/page.tsx.
+Example: For /industries/healthcare/seo, create app/industries/[industry]/[service]/page.tsx.
+Example (using your original): For /miami/sushi, create app/[location]/[q]/page.tsx.
+The names within the brackets (e.g., location, service, industry, q) are your parameters.
+Implement the Dynamic Page Component (page.tsx):
+
+This file defines the structure and content of your landing page template (like the Apex Insights template).
+Define an async function Page({ params }) as the default export. Access parameters (e.g., params.location, params.service).
+Decode URL-encoded parameters: const decodedParam = decodeURIComponent(params.yourParam);
+Fetch Dynamic Content Data: Implement or call a data-fetching function (e.g., getLandingPageData(location, service)) using the decoded parameters. This function must retrieve data needed to populate the template specifically for this segment. This could include:
+Segment-specific headlines/sub-headlines (for Hero section).
+Relevant pain points (for Problem section).
+Tailored benefit descriptions (for Benefit section).
+Filtered testimonials (relevant to the industry/service).
+Segment-specific FAQs.
+Appropriate images or statistics.
+Data needed for the H1 tag (like number of results/case studies if applicable).
+Render Content using Template Structure: Build the page using React components that map to your defined template sections (I. Navigation, II. Hero, III. Problem, IV. Solution, V. Benefit, VI. Action Plan, VII. Testimonial, VIII. FAQ, IX. CTA).
+Populate these components dynamically using the fetched data and decoded parameters.
+Static vs. Dynamic: Some template parts (like Navigation structure, general 'How It Works' steps, founder photo) might be static, while others (Hero text, Problems, Benefits, Testimonials) will be dynamic.
+Optimize Page Headline (H1 Tag):
+
+Within the Hero Section component (or directly in page.tsx), create the dynamic <h1> tag.
+Use the fetched data and decoded parameters to make it highly relevant to the specific page variation.
+Example (matching template): <h1>{fetchedData.heroHeadline ||Integrated ${decodedService} Solutions in ${decodedLocation}}</h1>
+Implement Dynamic Metadata (generateMetadata):
+
+In the same page.tsx, export async function generateMetadata({ params }).
+Decode parameters as in the Page component.
+Caching: Wrap your core data-fetching function (e.g., getLandingPageData) with React.cache to avoid redundant fetches between Page and generateMetadata. Import cache from react.
+TypeScript
+
+import { cache } from 'react';
+
+// Assume getDataFromSource is your actual DB/API call
+const cachedGetLandingPageData = cache(async (location: string, service: string) => {
+  // Fetch data relevant to location and service for metadata/page content
+  return await getDataFromSource(location, service);
+});
+
+// Use cachedGetLandingPageData in both Page component and generateMetadata
+Fetch Metadata-Specific Data: Call the cached data fetching function if needed (e.g., to get dynamic elements for the title).
+Return Metadata: Return an object with dynamic title and description tailored to the page's specific parameters, incorporating keywords naturally.
+Example Title: {fetchedData.metaTitle ||${decodedService} Services in ${decodedLocation} | Apex Insights}
+Example Description: {fetchedData.metaDescription ||Discover how Apex Insights provides expert ${decodedService} solutions tailored for businesses in ${decodedLocation}. Book a free consultation today.}
+Generate Sitemap (sitemap.ts):
+
+Create app/sitemap.ts. Import MetadataRoute. Export async function sitemap().
+Fetch All Parameter Combinations: Fetch all valid combinations of parameters (e.g., all locations + all services + all industries you target) for which you want to generate landing pages. This defines the scope of your pSEO effort.
+Construct Sitemap Entries: Map over these combinations to create an array of sitemap entries. Ensure url uses the correct base URL (process.env.NEXT_PUBLIC_BASE_URL) and properly encoded parameters matching your dynamic route structure.
+TypeScript
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+const dynamicPageEntries = allCombinations.map(item => ({
+  url: `<span class="math-inline">\{baseUrl\}/services/</span>{encodeURIComponent(item.location)}/${encodeURIComponent(item.service)}`,
+  // ... other optional sitemap fields
+}));
+Add entries for static pages. Return the full array.
+Pre-render Pages with generateStaticParams (Optional but Recommended):
+
+In page.tsx, export async function generateStaticParams().
+Fetch the same parameter combinations used in sitemap.ts (or a subset for faster builds).
+Return an array of objects, where each object has keys matching your dynamic segments (location, service, etc.) with URL-encoded values for the pages you want to build upfront.
+TypeScript
+
+export async function generateStaticParams() {
+  const allCombinations = await getAllTargetedCombinations();
+  return allCombinations.map(item => ({
+    location: encodeURIComponent(item.location),
+    service: encodeURIComponent(item.service),
+  }));
+}
+Consider returning a subset or empty array for very large numbers of pages, relying more on ISR/on-demand generation.
+Configure Revalidation (Optional but Recommended):
+
+In page.tsx, export const revalidate = <seconds>; (e.g., 86400 for 24 hours).
+This enables Incremental Static Regeneration (ISR), allowing pages to be served from cache but updated periodically in the background if the underlying data changes. Useful for keeping content fresh without needing a full redeploy. Works only in production.

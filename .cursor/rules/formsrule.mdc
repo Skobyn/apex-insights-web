@@ -1,0 +1,85 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+Objective: Ensure all generated forms correctly submit data to both Netlify Forms and a Supabase database (via a Netlify Function), and conditionally trigger a Calendly popup upon successful submission if the form's purpose is scheduling.
+
+Core Pattern for ALL Forms:
+
+Every form component generated must implement the following structure and logic:
+
+HTML Form Element (<form>):
+
+Must include the data-netlify="true" attribute for Netlify detection.
+Must include a method="POST" attribute.
+Must include a unique and descriptive name attribute (e.g., name="contact-us", name="demo-request", name="newsletter-signup"). This name is crucial for identifying the form in both Netlify and the Supabase submission.
+Should have an onSubmit handler pointing to the handleSubmit function in the React component.
+React State Management:
+
+Use React state (e.g., useState) to manage the values of all form input fields. Initialize with appropriate empty values (e.g., '').
+Client-Side Validation:
+
+Implement a validation function (e.g., validateForm) specific to the fields of the current form before attempting any submission.
+Check for required fields and appropriate formats (e.g., email format).
+If validation fails, display clear error messages to the user (e.g., using state to show/hide error elements) and prevent submission.
+handleSubmit Function Logic:
+
+Prevent Default: Start with event.preventDefault();.
+Run Validation: Call the form-specific validation function. If it returns false or throws errors, stop execution.
+Prepare Data:
+For Netlify: Create a FormData object from the form event (new FormData(event.target)) or manually construct the URL-encoded string.
+For Supabase: Create a plain JavaScript object containing all the form field values from the React state.
+Add Metadata for Supabase: Add the following key-value pairs to the JavaScript object destined for Supabase:
+formType: Set this to the exact string used in the form's name attribute (e.g., 'contact-us', 'demo-request').
+submittedAt: Set this to new Date().toISOString().
+Initiate Dual Submissions (using Workspace):
+Netlify Submission:
+Send a POST request to the current page's path (or often just /).
+Set the Content-Type header to application/x-www-form-urlencoded.
+Use new URLSearchParams(formDataObject).toString() as the request body (where formDataObject contains the form data suitable for URL encoding, potentially derived from the React state or FormData). Note: This submission is often handled automatically by Netlify if the HTML attributes are correct, but explicitly sending it ensures reliability and follows the user's described pattern.
+Supabase Submission (via Netlify Function):
+Send a POST request to the designated Netlify serverless function endpoint: /.netlify/functions/submit-form.
+Set the Content-Type header to application/json.
+Use JSON.stringify() on the JavaScript object (containing form data + formType + submittedAt) as the request body.
+Handle Supabase Response:
+Use await on the Workspace call to the Netlify function.
+Check if the response is ok (response.ok).
+On Success:
+Display a success message to the user (e.g., using a toast notification).
+Reset the form fields by clearing the React state.
+Calendly Trigger Check: Determine if the form's submission goal involves scheduling. This check could be based on:
+The text content of the submit button (e.g., includes "Schedule", "Book", "Appointment").
+A specific prop passed to the form component indicating intent (e.g., <ContactForm scheduleIntent={true} />).
+The formType itself (e.g., if formType === 'demo-request').
+If Scheduling Intent Confirmed: Trigger the Calendly popup. Implement this using the standard Calendly popup embed code/logic (e.g., Calendly.initPopupWidget({ url: 'YOUR_CALENDLY_LINK' });). Ensure the Calendly embed script is appropriately loaded on the page or globally.
+On Error:
+Display an error message to the user (e.g., using a toast notification). Log the error for debugging if necessary.
+Error Handling: Wrap the submission logic (Workspace calls) in a try...catch block to handle network errors or unexpected issues.
+Serverless Function Assumption:
+
+Assume the Netlify Function at /.netlify/functions/submit-form is already deployed and configured.
+This function expects a POST request with a JSON body containing formType, submittedAt, and the specific form data fields.
+It is responsible for connecting to Supabase and inserting the data into the appropriate table based on the formType.
+
+
+Checklist:
+[ ] Is data-netlify="true" on the <form> tag?
+[ ] Is method="POST" on the <form> tag?
+[ ] Does the <form> tag have a unique and descriptive name attribute?
+[ ] Does the component use React state for form fields?
+[ ] Is there client-side validation for the specific form fields?
+[ ] Does handleSubmit prevent default?
+[ ] Does handleSubmit run validation first?
+[ ] Does handleSubmit make a POST request to /.netlify/functions/submit-form?
+[ ] Is the payload to the function application/json?
+[ ] Does the JSON payload include a formType matching the form name?
+[ ] Does the JSON payload include submittedAt as an ISO string?
+[ ] Is the response from the function checked (response.ok)?
+[ ] Are success/error messages shown to the user?
+[ ] Is the form state reset on success?
+[ ] Is there a check after successful submission to determine if Calendly should be triggered?
+[ ] Is the Calendly popup triggered (Calendly.initPopupWidget) conditionally based on the check?
+[ ] Is there try...catch error handling around the submission logic?
+
