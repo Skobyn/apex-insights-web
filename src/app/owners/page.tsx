@@ -5,19 +5,31 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import Head from "next/head";
 
-// Extend JSX IntrinsicElements with custom elements
+// Define custom element types using interfaces instead of namespaces
+type DFMessengerProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+  'project-id'?: string;
+  'agent-id'?: string;
+  'language-code'?: string;
+  'max-query-length'?: string;
+};
+
+type DFMessengerChatBubbleProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+  'chat-title'?: string;
+};
+
+// Extend JSX IntrinsicElements via module augmentation
 declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'df-messenger': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'project-id'?: string;
-        'agent-id'?: string;
-        'language-code'?: string;
-        'max-query-length'?: string;
-      };
-      'df-messenger-chat-bubble': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-        'chat-title'?: string;
-      };
+  interface HTMLElementTagNameMap {
+    'df-messenger': HTMLElement;
+    'df-messenger-chat-bubble': HTMLElement;
+  }
+}
+
+declare module 'react' {
+  interface JSX {
+    IntrinsicElements {
+      'df-messenger': DFMessengerProps;
+      'df-messenger-chat-bubble': DFMessengerChatBubbleProps;
     }
   }
 }
