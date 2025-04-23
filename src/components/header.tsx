@@ -41,7 +41,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/ApexLogo.svg" alt="Apex Insights Logo" width={40} height={40} priority />
+            <Image src="/ApexLogo.svg" alt="Apex Insights Logo" width={56} height={56} priority className="min-w-[56px] min-h-[56px] object-contain" />
           </Link>
         </div>
 
