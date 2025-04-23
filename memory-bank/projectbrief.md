@@ -6,14 +6,16 @@ A marketing and informational website for Apex Insights, a business offering ser
 
 Built using Next.js, React, Tailwind CSS, Shadcn/ui, and potentially Supabase/Prisma.
 
+---
+
 ## Core Requirements
 
 *   Clearly present Apex Insights' services and value proposition.
 *   Showcase client testimonials/case studies.
 *   Provide easy ways for potential clients to inquire or book consultations.
 *   Include informational content (like blog posts).
-*   Maintain a professional and modern design.
-*   Facilitate SEO and online marketing efforts.
+*   Maintain a professional and modern design, now featuring the ApexLogo.svg branding.
+*   Facilitate SEO and online marketing efforts, including dynamic landing pages.
 *   Allow for ongoing updates (landing pages, blogs, marketing copy, social links).
 
 ## High-Level Deployment Requirements

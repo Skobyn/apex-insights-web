@@ -1,5 +1,19 @@
 # Project Progress: Apex Insights Web
 
+## Current Focus: Branding, pSEO, and Landing Pages
+
+The project is now focused on updating branding (ApexLogo.svg), improving programmatic SEO, and building dynamic landing pages for Apex Insights services.
+
+**In Progress:**
+- Branding update: replaced text logo with ApexLogo.svg in the header
+- SEO improvements and dynamic landing page structure
+- Content population and refinement for all landing pages
+- General marketing copy and site improvements
+
+**Completed:**
+- Updated Memory Bank and documentation to reflect new direction
+- Replaced text logo with ApexLogo.svg in the site header
+
 ## Overall Status
 
 The website is live at getapexinsights.com. Three new landing pages (AI Agent Workshop, Gemini BI Quickstart, Workspace AI Boost) have been created with an enhanced visual structure, ready for final content population. Added a new "Owners" page with a Google Dialogflow chatbot integration for SMB Tax assistance.

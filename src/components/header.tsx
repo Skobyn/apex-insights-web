@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,7 +41,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-primary">Apex Insights</span>
+            <Image src="/ApexLogo.svg" alt="Apex Insights Logo" width={40} height={40} priority />
           </Link>
         </div>
 

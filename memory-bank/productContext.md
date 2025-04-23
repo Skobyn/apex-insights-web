@@ -8,6 +8,8 @@ To serve as the primary online presence for Apex Insights. It aims to:
 *   Generate leads by encouraging contact or consultation bookings.
 *   Support marketing campaigns by providing targeted landing pages and content.
 
+---
+
 ## How does it work?
 
 It's a static/server-rendered website built with Next.js. Key sections likely include:
@@ -20,7 +22,7 @@ It's a static/server-rendered website built with Next.js. Key sections likely in
 
 ## User Experience Goals
 
-*   Professional, clean, and trustworthy design.
+*   Professional, clean, and trustworthy design, now featuring the ApexLogo.svg branding.
 *   Clear navigation and easy access to information about services.
 *   Fast loading speed and responsiveness across devices.
 *   Compelling calls-to-action (CTAs) to encourage engagement.

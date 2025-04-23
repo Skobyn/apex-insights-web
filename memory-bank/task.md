@@ -27,6 +27,7 @@
 
 ## Completed Tasks
 
+*   [x] Branding: Replaced text logo with ApexLogo.svg in the site header
 *   [x] Task 0: Initial project setup
 *   [x] Initialize Memory Bank structure
 *   [x] Populate initial Memory Bank content (Revised for live site)

@@ -11,6 +11,8 @@
 *   Font: Geist (via next/font)
 *   Data Source: Google Sheets (via published CSV URLs)
 
+---
+
 ## Setup Instructions
 
 See the root `README.md` for basic setup instructions (`npm run dev`, etc.) and required Environment Variables for the pSEO functionality.

@@ -1,5 +1,9 @@
 # Apex Insights Web
 
+Apex Insights Web is a modern, SEO-focused web application for Apex Insights, designed to generate dynamic landing pages and showcase our services. The site now features updated branding with the new ApexLogo.svg.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
